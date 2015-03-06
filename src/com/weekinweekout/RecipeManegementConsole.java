@@ -3,6 +3,7 @@ package com.weekinweekout;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.HashMap;
+import java.util.Map;
 
 import com.weekinweekout.logic.RecipeManager;
 
@@ -31,9 +32,8 @@ public class RecipeManegementConsole {
 		RecipeManager manager = new RecipeManager(recipeFile);
 		HashMap<Integer,String> recipeDatas = manager.getRecipes();
 
-		for (int index = 0 ; index<recipeDatas.size() ; index++) {
-			String outputMessage = recipeDatas.get(index);
-			System.out.println(index + " :" + outputMessage);
+		for(Map.Entry<Integer, String> e : recipeDatas.entrySet()) {
+			System.out.println(e.getKey() + " : " + e.getValue());
 		}
 	}
 
