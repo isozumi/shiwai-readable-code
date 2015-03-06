@@ -2,10 +2,9 @@ package com.weekinweekout;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.List;
+import java.util.HashMap;
 
 import com.weekinweekout.logic.RecipeManager;
-import com.weekinweekout.util.Utilities;
 
 public class RecipeManegementConsole {
 	/**
@@ -28,14 +27,15 @@ public class RecipeManegementConsole {
 		if (!recipeFile.exists()) {
 			throw new FileNotFoundException("レシピファイルが見つかりません。");
 		}
-		
-		RecipeManager manager = new RecipeManager(recipeFile);
-		List<String> recipeDatas = manager.getRecipes();
 
-		for (String recipeData : recipeDatas) {
-			System.out.println(recipeData);
+		RecipeManager manager = new RecipeManager(recipeFile);
+		HashMap<Integer,String> recipeDatas = manager.getRecipes();
+
+		for (int index = 0 ; index<recipeDatas.size() ; index++) {
+			String outputMessage = recipeDatas.get(index);
+			System.out.println(index + " :" + outputMessage);
 		}
 	}
 
-	
+
 }
